@@ -1,5 +1,5 @@
-
-var command = require('command.js')
+var fs = require('fs');
+var command = require('./command.js')
 process.stdout.write('prompt >');
 
 process.stdin.on('data', (data)  => {
@@ -9,7 +9,13 @@ process.stdin.on('data', (data)  => {
 		command.pwd();
 	}
 	if(cmd === 'date'){
-		process.stdout.write(Date() + '\n');
+		command.date();
+	}
+	if(cmd === 'fs'){
+		command.fs();
+	}
+	if(cmd.includes('echo')){
+		command.echo(data.toString().trim());
 	}
 	process.stdout.write('You typed: ' + cmd);
 	process.stdout.write('\nprompt > ');
