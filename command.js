@@ -19,8 +19,13 @@ module.exports = {
 	},
 	echo: (string) => {
 		process.stdout.write(string.substring(5) + '\n');
-
-	}
+	},
+	cat: (str)  => {
+		var result = fs.readFileSync(str, (err,rs) => {
+			if (err) return 'error\n';
+			else return rs;
+		});
+		console.log(result);
 }
 
-
+};

@@ -17,6 +17,11 @@ process.stdin.on('data', (data)  => {
 	if(cmd.includes('echo')){
 		command.echo(data.toString().trim());
 	}
+	if(cmd.includes('cat')) {
+		var file_req = data.toString().substring(3).trim();
+		if (command.fs().includes(file_req)) console.log('true');
+		else console.log('fals');
+	}
 	process.stdout.write('You typed: ' + cmd);
 	process.stdout.write('\nprompt > ');
-})
+});
